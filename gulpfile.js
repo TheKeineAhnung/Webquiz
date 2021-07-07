@@ -104,6 +104,17 @@ const html = () => {
   );
 };
 
+// Compile .json
+const json = () => {
+  // Find json
+  return (
+    gulp
+      .src(`${src}/data/**/*.json`)
+      // Write everything to destination folder
+      .pipe(gulp.dest(`${dist}/data`))
+  );
+};
+
 // Compile .js to minify .js
 const script = () => {
   // Find JavaScript
@@ -186,14 +197,24 @@ const watch = () =>
       `${src}/img/**/*.png`,
       `${src}/icons/**/*.ico`,
     ],
-    gulp.series(css, script, html, htmlSub, png, icons, reload)
+    gulp.series(css, script, html, htmlSub, png, icons, json, reload)
   );
 
 // All Tasks for this Project
-const dev = gulp.series(css, script, html, htmlSub, png, icons, serve, watch);
+const dev = gulp.series(
+  css,
+  script,
+  html,
+  htmlSub,
+  png,
+  icons,
+  json,
+  serve,
+  watch
+);
 
 // Just Build the Project
-const build = gulp.series(css, script, html, htmlSub, png, icons);
+const build = gulp.series(css, script, html, htmlSub, png, icons, json);
 
 // Default function (used when type gulp)
 exports.dev = dev;
