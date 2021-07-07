@@ -196,6 +196,7 @@ const watch = () =>
       `${src}/js/**/*.js`,
       `${src}/img/**/*.png`,
       `${src}/icons/**/*.ico`,
+      `${src}/data/**/*.json`,
     ],
     gulp.series(css, script, html, htmlSub, png, icons, json, reload)
   );
