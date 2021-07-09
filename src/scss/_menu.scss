@@ -1,3 +1,10 @@
+@import "defaultValuesSize";
+@import "defaultValues";
+
+$header-height: 6.5%;
+$menu-width: $percent-100;
+$start-button-radius: 5px;
+
 .menu-main-div {
   left: $percent-0;
   width: $menu-width;
