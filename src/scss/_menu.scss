@@ -1,0 +1,29 @@
+.menu-main-div {
+  left: $percent-0;
+  width: $menu-width;
+  position: $absolute;
+  height: $header-height;
+  border-color: #ffffff00;
+  background-color: $menu-background;
+  overflow: $hidden;
+  position: $relative;
+  text-align: $center;
+  border-radius: $div-border;
+}
+
+.button.start {
+  margin: $pixel-5;
+  font-size: $button-font-size;
+  border-radius: $start-button-radius;
+  border: $none;
+  background-color: $button-background;
+
+  &:hover {
+    background-color: $button-background-hover;
+    transition-duration: 0.5s;
+  }
+
+  &:not(:hover) {
+    transition-duration: 0.5s;
+  }
+}
