@@ -34,7 +34,7 @@ const reload = (done) => {
 const serve = (done) => {
   browserSync.init({
     server: {
-      baseDir: `${dist}/html`,
+      baseDir: `${dist}`,
     },
   });
   done();
