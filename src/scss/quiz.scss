@@ -1,0 +1,73 @@
+@import "defaultStyle";
+@import "defaultValuesSize";
+@import "importantColors";
+@import "menu";
+
+$answer-button-padding: 10px;
+
+body {
+  background-color: $background-color;
+  color: $default-black;
+}
+
+.quiz.quiz-total {
+  background-color: $menu-background;
+  margin-top: $percent-10;
+  margin-left: 32.5%;
+  margin-right: 32.5%;
+  border-radius: 5%;
+  box-shadow: 2.5px 2.5px 7.5px 7.5px $menu-background-shadow;
+  text-align: left;
+}
+
+.h1-question {
+  text-align: left;
+}
+
+.question {
+  padding-top: 40px;
+  width: 70%;
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: left;
+  color: $default-white;
+}
+
+.button-answer {
+  background-color: #ffffff;
+  border: $solid;
+  border-color: $button-background;
+  border-radius: 5px;
+  width: 100%;
+  text-align: $left;
+  padding-top: $answer-button-padding;
+  padding-bottom: $answer-button-padding;
+
+  &:hover {
+    background-color: $button-background-hover;
+    transition-duration: 0.5s;
+  }
+
+  &:not(:hover) {
+    transition-duration: 0.5s;
+  }
+}
+
+.answer-total {
+  width: 70%;
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: left;
+}
+
+.answer-sub-div {
+  padding: 5px;
+}
+
+.answer-1 {
+  padding-top: 25px;
+}
+
+.answer-4 {
+  padding-bottom: 40px;
+}
