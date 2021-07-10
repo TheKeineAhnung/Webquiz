@@ -27,19 +27,19 @@ async function displayQuestion(allData) {
       console.error(localStorage.getItem("round"));
       questionArea.innerHTML = allData[localStorage.getItem("round")].question;
       answerAreaOne.innerHTML =
-        "<button>" +
+        "<button class='button-answer'>" +
         allData[localStorage.getItem("round")].answers[0] +
         "</button>";
       answerAreaTwo.innerHTML =
-        "<button>" +
+        "<button class='button-answer'>" +
         allData[localStorage.getItem("round")].answers[1] +
         "</button>";
       answerAreaThree.innerHTML =
-        "<button>" +
+        "<button class='button-answer'>" +
         allData[localStorage.getItem("round")].answers[2] +
         "</button>";
       answerAreaFour.innerHTML =
-        "<button>" +
+        "<button class='button-answer'>" +
         allData[localStorage.getItem("round")].answers[3] +
         "</button>";
       await sleep(3000);
