@@ -120,7 +120,7 @@ const script = () => {
   // Find JavaScript
   return (
     gulp
-      .src(`src/js/**/*.js`)
+      .src([`src/js/**/*.js`, `!src/js/lib/*.js`])
       // Init Plumber
       .pipe(
         plumber((error) => {
