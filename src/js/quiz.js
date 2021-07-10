@@ -25,7 +25,10 @@ async function displayQuestion(allData) {
       var answerAreaThree = document.getElementsByClassName("answer-3")[0];
       var answerAreaFour = document.getElementsByClassName("answer-4")[0];
       console.error(localStorage.getItem("round"));
-      questionArea.innerHTML = allData[localStorage.getItem("round")].question;
+      questionArea.innerHTML =
+        "<h1 class='h1-question'>" +
+        allData[localStorage.getItem("round")].question +
+        "</h1>";
       answerAreaOne.innerHTML =
         "<button class='button-answer'>" +
         allData[localStorage.getItem("round")].answers[0] +
