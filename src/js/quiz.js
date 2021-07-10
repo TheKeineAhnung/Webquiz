@@ -27,13 +27,21 @@ async function displayQuestion(allData) {
       console.error(localStorage.getItem("round"));
       questionArea.innerHTML = allData[localStorage.getItem("round")].question;
       answerAreaOne.innerHTML =
-        allData[localStorage.getItem("round")].answers[0];
+        "<button>" +
+        allData[localStorage.getItem("round")].answers[0] +
+        "</button>";
       answerAreaTwo.innerHTML =
-        allData[localStorage.getItem("round")].answers[1];
+        "<button>" +
+        allData[localStorage.getItem("round")].answers[1] +
+        "</button>";
       answerAreaThree.innerHTML =
-        allData[localStorage.getItem("round")].answers[2];
+        "<button>" +
+        allData[localStorage.getItem("round")].answers[2] +
+        "</button>";
       answerAreaFour.innerHTML =
-        allData[localStorage.getItem("round")].answers[3];
+        "<button>" +
+        allData[localStorage.getItem("round")].answers[3] +
+        "</button>";
       await sleep(3000);
       console.warn("after");
       localStorage.setItem("round", Number(localStorage.getItem("round")) + 1);
