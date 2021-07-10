@@ -3,14 +3,14 @@
     "id": 1,
     "question": "Question 1",
     "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
-    "correctAnswer": "answer 1, 2, 3, 4",
+    "correctAnswer": 4,
     "duration": 15
   },
   {
     "id": 2,
     "question": "Question 2",
     "answers": ["answer 1", "answer 2", "answer 3", "answer 4"],
-    "correctAnswer": "answer 1, 2, 3, 4",
+    "correctAnswer": 2,
     "duration": 15
   }
 ]
