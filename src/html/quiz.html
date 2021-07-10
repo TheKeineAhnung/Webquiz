@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="data/question.json"></script>
+    <script src="../js/lib/jquery-3.6.0.js"></script>
+    <script src="../data/question.json"></script>
     <script src="../js/quiz.js"></script>
     <link rel="stylesheet" href="../css/quiz.css" />
     <title>Quiz</title>
   </head>
-  <body></body>
+  <body>
+    <div class="menu-main-div">
+      <a href="../index.html" class="button-link">
+        <button class="button start" id="start-menu-button">Main Page</button>
+      </a>
+    </div>
+    <div class="quiz quiz-total" id="quiz quiz-total">
+      <div class="question" id="question"></div>
+      <div class="answer answer-total">
+        <div class="answer answer-1"></div>
+        <div class="answer answer-2"></div>
+        <div class="answer answer-3"></div>
+        <div class="answer answer-4"></div>
+      </div>
+    </div>
+  </body>
 </html>
