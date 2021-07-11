@@ -6,6 +6,8 @@
 $button-padding: 10px;
 $border-radius: 5px;
 $timer-background: black;
+$false: #ff2c21;
+$correct: #00ff1e;
 
 body {
   background-color: $background-color;
@@ -89,6 +91,27 @@ body {
 
 .locked {
   cursor: default;
+  background-color: $default-white;
+
+  &.false {
+    background-color: $false;
+
+    &:hover {
+      background-color: $false;
+    }
+  }
+
+  &.correct {
+    background-color: $correct;
+
+    &:hover {
+      background-color: $correct;
+    }
+  }
+
+  &:hover {
+    background-color: $default-white;
+  }
 }
 
 .answer-span {
@@ -96,11 +119,11 @@ body {
 }
 
 .correct {
-  background-color: #00ff1e;
+  background-color: $correct;
 }
 
 .false {
-  background-color: #ff2c21;
+  background-color: $false;
 }
 
 #head-section {
