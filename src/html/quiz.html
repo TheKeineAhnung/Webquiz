@@ -17,15 +17,30 @@
       </a>
     </div>
     <div class="quiz quiz-total" id="quiz quiz-total">
-      <section>
-        <div class="question" id="question"></div>
-      </section>
+      <header id="head-section">
+        <span class="question" id="question"></span>
+        <div class="timer" id="timer-div">
+          <span class="timer" id="timer-text-span">Time: </span>
+          <span class="timer" id="timer-time-span"></span>
+        </div>
+      </header>
       <section>
         <div class="answer answer-total">
-          <div class="answer answer-1 answer-sub-div" onclick="answer(1)"></div>
-          <div class="answer answer-2 answer-sub-div" onclick="answer(2)"></div>
-          <div class="answer answer-3 answer-sub-div" onclick="answer(3)"></div>
-          <div class="answer answer-4 answer-sub-div" onclick="answer(4)"></div>
+          <div class="answer answer-1 answer-sub-div" onclick="answer(1)">
+            <span class="answer-1-span answer-span"></span>
+          </div>
+          <div class="answer answer-2 answer-sub-div" onclick="answer(2)">
+            <span class="answer-2-span answer-span"></span>
+          </div>
+          <div class="answer answer-3 answer-sub-div" onclick="answer(3)">
+            <span class="answer-3-span answer-span"></span>
+          </div>
+          <div class="answer answer-4 answer-sub-div" onclick="answer(4)">
+            <span class="answer-4-span answer-span"></span>
+          </div>
+        </div>
+        <div class="button-div-next">
+          <button class="button button-next" onclick="next();">Next</button>
         </div>
       </section>
     </div>

@@ -3,7 +3,9 @@
 @import "importantColors";
 @import "menu";
 
-$answer-button-padding: 10px;
+$button-padding: 10px;
+$border-radius: 5px;
+$timer-background: black;
 
 body {
   background-color: $background-color;
@@ -26,22 +28,29 @@ body {
 
 .question {
   padding-top: 40px;
-  width: 70%;
   padding-left: 15%;
-  padding-right: 15%;
   text-align: left;
   color: $default-white;
+  width: auto;
+  //justify-content: left;
+  //display: flex;
 }
 
-.button-answer {
+.answer-sub-div {
   background-color: #ffffff;
   border: $solid;
   border-color: $button-background;
-  border-radius: 5px;
+  border-radius: $border-radius;
   width: 100%;
   text-align: $left;
-  padding-top: $answer-button-padding;
-  padding-bottom: $answer-button-padding;
+  padding-top: $button-padding;
+  padding-bottom: $button-padding;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+  &::target-text {
+    padding-left: 5px;
+  }
 
   &:hover {
     background-color: $button-background-hover;
@@ -58,16 +67,69 @@ body {
   padding-left: 15%;
   padding-right: 15%;
   text-align: left;
-}
-
-.answer-sub-div {
-  padding: 5px;
-}
-
-.answer-1 {
-  padding-top: 25px;
+  cursor: pointer;
 }
 
 .answer-4 {
-  padding-bottom: 40px;
+  margin-bottom: 25px;
+}
+
+.button-next {
+  padding: $button-padding;
+  border-color: $button-background;
+  border-radius: $border-radius;
+  background-color: #52fff1;
+}
+
+.button-div-next {
+  width: 10%;
+  padding-left: 85%;
+  padding-right: 5%;
+}
+
+.locked {
+  cursor: default;
+}
+
+.answer-span {
+  padding-left: 5px;
+}
+
+.correct {
+  background-color: #00ff1e;
+}
+
+.false {
+  background-color: #ff2c21;
+}
+
+#head-section {
+  display: $flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  height: auto;
+}
+
+#timer-div {
+  display: $flex;
+  justify-content: right;
+  left: 60%;
+  position: relative;
+  bottom: 50px;
+  font-size: 25px;
+  width: 119px;
+  height: auto;
+  border: $solid;
+  border-color: $button-background;
+  border-radius: $border-radius;
+}
+
+#timer-time-span {
+  position: initial;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+.timer {
+  color: $default-white;
 }
