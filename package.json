@@ -1,7 +1,7 @@
 {
-  "name": "portfoliowebpage",
-  "version": "1.1.0",
-  "description": "Portfolio Web Page",
+  "name": "Quiz",
+  "version": "1.0.0",
+  "description": "A basic quiz",
   "main": "index.js",
   "scripts": {
     "dev": "gulp dev",
@@ -9,10 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheKeineAhnung/PortfolioWebPage.git"
+    "url": "git+https://github.com/TheKeineAhnung/quiz.git"
   },
   "keywords": [
-    "Portfolio",
     "HTML",
     "CSS",
     "SCSS/Sass",
@@ -21,9 +20,9 @@
   "author": "KeineAhnung",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TheKeineAhnung/PortfolioWebPage/issues"
+    "url": "https://github.com/TheKeineAhnung/quiz/issues"
   },
-  "homepage": "https://github.com/TheKeineAhnung/PortfolioWebPage#readme",
+  "homepage": "https://github.com/TheKeineAhnung/quiz#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
