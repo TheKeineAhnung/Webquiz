@@ -42,6 +42,31 @@ async function displayQuestion(allData) {
   answerAreaTwo.innerHTML = allData[localStorage.getItem("round")].answers[1];
   answerAreaThree.innerHTML = allData[localStorage.getItem("round")].answers[2];
   answerAreaFour.innerHTML = allData[localStorage.getItem("round")].answers[3];
+  var secondOver = allData[localStorage.getItem("round")].duration;
+  var startTimer = setInterval(timer, 1000);
+
+  function timer() {
+    var getClassListTimer = document.getElementsByClassName("locked");
+    for (x of getClassListTimer) {
+      if (secondOver <= 0 || "locked" == x.classList[3]) {
+        console.log("over");
+        var options = document.getElementsByClassName("answer-sub-div");
+        for (i of options) {
+          i.classList.add("locked");
+        }
+        stopTimer();
+        return;
+      }
+    }
+
+    secondOver--;
+    var timerArea = document.getElementById("timer-time-span");
+    timerArea.innerText = secondOver;
+  }
+
+  function stopTimer() {
+    clearInterval(startTimer);
+  }
 }
 
 function answer(selectedAnswer) {
@@ -55,16 +80,31 @@ function answer(selectedAnswer) {
     type: "GET",
     success: function (r) {
       var correct = document.getElementsByClassName("answer-" + selectedAnswer);
+      console.warn(correct[0].classList[correct[0].classList.length - 1]);
       if (
         selectedAnswer ==
           r[Number(localStorage.getItem("round"))].correctAnswer &&
-        correct[0].classList[correct.length - 1] != "locked"
+        Number(sessionStorage.getItem("actualRound")) == 0
       ) {
         console.log("correct");
         correct[0].classList.add("correct");
-      } else {
+        sessionStorage.setItem(
+          "actualRound",
+          Number(sessionStorage.getItem("actualRound")) + 1
+        );
+      } else if (
+        selectedAnswer !=
+          r[Number(localStorage.getItem("round"))].correctAnswer &&
+        Number(sessionStorage.getItem("actualRound")) == 0
+      ) {
         console.log("incorrect");
         correct[0].classList.add("false");
+        sessionStorage.setItem(
+          "actualRound",
+          Number(sessionStorage.getItem("actualRound")) + 1
+        );
+      } else {
+        console.log("incorret");
       }
     },
   });
@@ -77,6 +117,7 @@ function reset() {
     i.classList.remove("correct");
     i.classList.remove("false");
   }
+  sessionStorage.setItem("actualRound", 0);
 }
-
+sessionStorage.setItem("actualRound", 0);
 loadFile();
