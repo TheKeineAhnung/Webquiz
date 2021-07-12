@@ -44,21 +44,24 @@ async function displayQuestion(allData) {
   answerAreaFour.innerHTML = allData[localStorage.getItem("round")].answers[3];
   var secondOver = allData[localStorage.getItem("round")].duration;
   var startTimer = setInterval(timer, 1000);
+  sessionStorage.setItem("startTimer", startTimer);
 
   function timer() {
     var getClassListTimer = document.getElementsByClassName("locked");
-    for (x of getClassListTimer) {
-      if (secondOver <= 0 || "locked" == x.classList[3]) {
-        console.log("over");
-        var options = document.getElementsByClassName("answer-sub-div");
-        for (i of options) {
-          i.classList.add("locked");
+    var options = document.getElementsByClassName("answer-sub-div");
+    if (secondOver <= 0) {
+      for (i of options) {
+        i.classList.add("locked");
+      }
+      for (var actualClass of getClassListTimer[0].classList) {
+        if (actualClass == "locked") {
+          console.warn(secondOver);
+          console.log("over");
+          stopTimer();
+          return;
         }
-        stopTimer();
-        return;
       }
     }
-
     secondOver--;
     var timerArea = document.getElementById("timer-time-span");
     timerArea.innerText = secondOver;
@@ -74,6 +77,11 @@ function answer(selectedAnswer) {
   for (i of options) {
     i.classList.add("locked");
   }
+
+  function stopTimer() {
+    clearInterval(Number(sessionStorage.getItem("startTimer")));
+  }
+
   $.ajax({
     url: "../data/question.json",
     dataType: "json",
@@ -103,8 +111,16 @@ function answer(selectedAnswer) {
           "actualRound",
           Number(sessionStorage.getItem("actualRound")) + 1
         );
+        var getClassListTimer = document.getElementsByClassName("locked");
+        for (var actualClass of getClassListTimer[0].classList) {
+          if (actualClass == "locked") {
+            console.log("over");
+            stopTimer();
+            return;
+          }
+        }
       } else {
-        console.log("incorret");
+        console.log("Mistake");
       }
     },
   });
