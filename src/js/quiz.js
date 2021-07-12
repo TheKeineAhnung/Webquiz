@@ -55,7 +55,6 @@ async function displayQuestion(allData) {
       }
       for (var actualClass of getClassListTimer[0].classList) {
         if (actualClass == "locked") {
-          console.warn(secondOver);
           console.log("over");
           stopTimer();
           return;
@@ -88,18 +87,23 @@ function answer(selectedAnswer) {
     type: "GET",
     success: function (r) {
       var correct = document.getElementsByClassName("answer-" + selectedAnswer);
-      console.warn(correct[0].classList[correct[0].classList.length - 1]);
+      var buttonNext = document.getElementsByClassName("button-next");
       if (
         selectedAnswer ==
           r[Number(localStorage.getItem("round"))].correctAnswer &&
         Number(sessionStorage.getItem("actualRound")) == 0
       ) {
         console.log("correct");
+        for (i of buttonNext) {
+          i.style.opacity = 1;
+        }
         correct[0].classList.add("correct");
         sessionStorage.setItem(
           "actualRound",
           Number(sessionStorage.getItem("actualRound")) + 1
         );
+        stopTimer();
+        return;
       } else if (
         selectedAnswer !=
           r[Number(localStorage.getItem("round"))].correctAnswer &&
@@ -114,6 +118,9 @@ function answer(selectedAnswer) {
         var getClassListTimer = document.getElementsByClassName("locked");
         for (var actualClass of getClassListTimer[0].classList) {
           if (actualClass == "locked") {
+            for (i of buttonNext) {
+              i.style.opacity = 1;
+            }
             console.log("over");
             stopTimer();
             return;
@@ -121,7 +128,14 @@ function answer(selectedAnswer) {
         }
       } else {
         console.log("Mistake");
+        for (i of buttonNext) {
+          i.style.opacity = 1;
+        }
+        return;
       }
+      /*for (i of buttonNext) {
+        i.style.opacity = 1;
+      }*/
     },
   });
 }

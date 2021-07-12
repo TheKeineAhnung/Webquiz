@@ -81,6 +81,9 @@ body {
   border-color: $button-background;
   border-radius: $border-radius;
   background-color: #52fff1;
+  opacity: 0;
+  transition-duration: 1s;
+  color: black;
 }
 
 .button-div-next {
