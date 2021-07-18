@@ -1,5 +1,5 @@
 {
-  "name": "Quiz",
+  "name": "quiz",
   "version": "1.0.0",
   "description": "A basic quiz",
   "main": "index.js",
@@ -11,12 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/TheKeineAhnung/quiz.git"
   },
-  "keywords": [
-    "HTML",
-    "CSS",
-    "SCSS/Sass",
-    "JavaScript"
-  ],
+  "keywords": [],
   "author": "KeineAhnung",
   "license": "ISC",
   "bugs": {
