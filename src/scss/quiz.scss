@@ -25,7 +25,14 @@ body {
 }
 
 .quiz-total {
+  transition-delay: 1s;
   transition-duration: 1s;
+}
+
+.finish-area {
+  transition-duration: 1s;
+  transition-delay: 3.5s;
+  opacity: 0;
 }
 
 .h1-question {
@@ -96,6 +103,16 @@ body {
   padding-right: 5%;
 }
 
+.button-again {
+  padding: $button-padding;
+  margin-top: 3%;
+  border-color: $button-background;
+  border-radius: $border-radius;
+  background-color: #52fff1;
+  transition-duration: 1s;
+  color: black;
+}
+
 .locked {
   cursor: default;
   background-color: $default-white;
@@ -142,12 +159,13 @@ body {
 
 #timer-div {
   display: $flex;
-  justify-content: right;
   left: 60%;
-  position: relative;
-  bottom: 50px;
+  margin-left: 15%;
+  margin-right: 15%;
   font-size: 25px;
-  width: 119px;
+  width: auto;
+  max-width: 119px;
+  min-width: 100px;
   height: auto;
   border: $solid;
   border-color: $button-background;
@@ -155,11 +173,24 @@ body {
 }
 
 #timer-time-span {
-  position: initial;
-  margin-left: 15px;
-  margin-right: 10px;
+  position: relative;
+  padding-left: 5%;
+  text-align: $right;
+}
+
+#timer-text-span {
+  text-align: $left;
+  padding-left: 7.5%;
 }
 
 .timer {
   color: $default-white;
+}
+
+.end-div {
+  background-color: $menu-background;
+  color: $default-white;
+  text-align: $center;
+  padding: 5%;
+  padding-bottom: 3%;
 }

@@ -1,5 +1,3 @@
-localStorage.setItem("round", "0");
-
 async function loadFile() {
   $.ajax({
     url: "../data/question.json",
@@ -17,9 +15,15 @@ async function next() {
     dataType: "json",
     type: "GET",
     success: function (r) {
-      localStorage.setItem("round", Number(localStorage.getItem("round")) + 1);
-      reset();
-      displayQuestion(r);
+      var buttonNext = document.getElementsByClassName("button-next");
+      if (buttonNext[0].style.opacity == 1) {
+        localStorage.setItem(
+          "round",
+          Number(localStorage.getItem("round")) + 1
+        );
+        reset();
+        displayQuestion(r);
+      }
     },
   });
 }
@@ -38,10 +42,28 @@ async function displayQuestion(allData) {
     "<h1 class='h1-question'>" +
     allData[localStorage.getItem("round")].question +
     "</h1>";
-  answerAreaOne.innerHTML = allData[localStorage.getItem("round")].answers[0];
-  answerAreaTwo.innerHTML = allData[localStorage.getItem("round")].answers[1];
-  answerAreaThree.innerHTML = allData[localStorage.getItem("round")].answers[2];
-  answerAreaFour.innerHTML = allData[localStorage.getItem("round")].answers[3];
+  if (allData[localStorage.getItem("round")].answers[0] != undefined) {
+    answerAreaOne.innerHTML = allData[localStorage.getItem("round")].answers[0];
+  } else {
+    document.getElementsByClassName("answer-1")[0].style.display = "none";
+  }
+  if (allData[localStorage.getItem("round")].answers[1] != undefined) {
+    answerAreaTwo.innerHTML = allData[localStorage.getItem("round")].answers[1];
+  } else {
+    document.getElementsByClassName("answer-2")[0].style.display = "none";
+  }
+  if (allData[localStorage.getItem("round")].answers[2] != undefined) {
+    answerAreaThree.innerHTML =
+      allData[localStorage.getItem("round")].answers[2];
+  } else {
+    document.getElementsByClassName("answer-3")[0].style.display = "none";
+  }
+  if (allData[localStorage.getItem("round")].answers[3] != undefined) {
+    answerAreaFour.innerHTML =
+      allData[localStorage.getItem("round")].answers[3];
+  } else {
+    document.getElementsByClassName("answer-4")[0].style.display = "none";
+  }
   var secondOver = allData[localStorage.getItem("round")].duration;
   var startTimer = setInterval(timer, 1000);
   sessionStorage.setItem("startTimer", startTimer);
@@ -49,13 +71,43 @@ async function displayQuestion(allData) {
   function timer() {
     var getClassListTimer = document.getElementsByClassName("locked");
     var options = document.getElementsByClassName("answer-sub-div");
+    var buttonNext = document.getElementsByClassName("button-next");
     if (secondOver <= 0) {
+      $.ajax({
+        url: "../data/question.json",
+        dataType: "json",
+        type: "GET",
+        success: function (r) {
+          for (var answer in r[Number(localStorage.getItem("round"))].answers) {
+            answer = Number(answer) + 1;
+            var answerClass = document.getElementsByClassName(
+              "answer-" + answer
+            );
+            if (Number(answer) == Number(r[0].correctAnswer)) {
+              answerClass[0].classList.add("correct");
+            }
+          }
+        },
+      });
       for (i of options) {
         i.classList.add("locked");
+        for (i of buttonNext) {
+          $.ajax({
+            url: "../data/question.json",
+            dataType: "json",
+            type: "GET",
+            success: function (r) {
+              if (r[Number(localStorage.getItem("round"))].id != r.length) {
+                i.style.opacity = 1;
+              } else {
+                finished();
+              }
+            },
+          });
+        }
       }
       for (var actualClass of getClassListTimer[0].classList) {
         if (actualClass == "locked") {
-          console.log("over");
           stopTimer();
           return;
         }
@@ -72,6 +124,7 @@ async function displayQuestion(allData) {
 }
 
 function answer(selectedAnswer) {
+  sessionStorage.setItem("selectedAnswer", selectedAnswer);
   var options = document.getElementsByClassName("answer-sub-div");
   for (i of options) {
     i.classList.add("locked");
@@ -93,9 +146,16 @@ function answer(selectedAnswer) {
           r[Number(localStorage.getItem("round"))].correctAnswer &&
         Number(sessionStorage.getItem("actualRound")) == 0
       ) {
-        console.log("correct");
+        sessionStorage.setItem(
+          "correctAnswers",
+          Number(sessionStorage.getItem("correctAnswers")) + 1
+        );
         for (i of buttonNext) {
-          i.style.opacity = 1;
+          if (r[Number(localStorage.getItem("round"))].id != r.length) {
+            i.style.opacity = 1;
+          } else {
+            finished();
+          }
         }
         correct[0].classList.add("correct");
         sessionStorage.setItem(
@@ -109,7 +169,6 @@ function answer(selectedAnswer) {
           r[Number(localStorage.getItem("round"))].correctAnswer &&
         Number(sessionStorage.getItem("actualRound")) == 0
       ) {
-        console.log("incorrect");
         correct[0].classList.add("false");
         sessionStorage.setItem(
           "actualRound",
@@ -119,23 +178,26 @@ function answer(selectedAnswer) {
         for (var actualClass of getClassListTimer[0].classList) {
           if (actualClass == "locked") {
             for (i of buttonNext) {
-              i.style.opacity = 1;
+              if (r[Number(localStorage.getItem("round"))].id != r.length) {
+                i.style.opacity = 1;
+              } else {
+                finished();
+              }
             }
-            console.log("over");
             stopTimer();
             return;
           }
         }
       } else {
-        console.log("Mistake");
         for (i of buttonNext) {
-          i.style.opacity = 1;
+          if (r[Number(localStorage.getItem("round"))].id != r.length) {
+            i.style.opacity = 1;
+          } else {
+            finished();
+          }
         }
         return;
       }
-      /*for (i of buttonNext) {
-        i.style.opacity = 1;
-      }*/
     },
   });
 }
@@ -148,6 +210,46 @@ function reset() {
     i.classList.remove("false");
   }
   sessionStorage.setItem("actualRound", 0);
+  var buttonNext = document.getElementsByClassName("button-next");
+  for (i of buttonNext) {
+    i.style.opacity = 0;
+  }
 }
 sessionStorage.setItem("actualRound", 0);
 loadFile();
+
+function finished() {
+  var quizArea = document.getElementsByClassName("quiz-total");
+  quizArea[0].style.opacity = 0;
+  setTimeout(function () {
+    quizArea[0].style.opacity = 1;
+    quizArea[0].innerHTML = `
+      <div class="end-div">
+        <span>${sessionStorage.getItem(
+          "correctAnswers"
+        )} of ${sessionStorage.getItem(
+      "allQuestions"
+    )} answers are correct! GG!</span>
+      <br>
+      <button class="button-again" onclick="replay()">Play Again</button>
+      </div>
+    `;
+  }, 1500);
+}
+
+window.onload = function setStorage() {
+  localStorage.setItem("round", "0");
+  sessionStorage.setItem("correctAnswers", 0);
+  $.ajax({
+    url: "../data/question.json",
+    dataType: "json",
+    type: "GET",
+    success: function (r) {
+      sessionStorage.setItem("allQuestions", r.length);
+    },
+  });
+};
+
+function replay() {
+  location.reload();
+}
