@@ -5,9 +5,10 @@
 
 $button-padding: 10px;
 $border-radius: 5px;
-$timer-background: black;
+$timer-background: $default-black;
 $false: #ff2c21;
 $correct: #00ff1e;
+$button-background-next: #52fff1;
 
 body {
   background-color: $background-color;
@@ -16,11 +17,11 @@ body {
 
 .quiz.quiz-total {
   background-color: $menu-background;
-  margin-top: $percent-10;
-  margin-left: 32.5%;
-  margin-right: 32.5%;
   border-radius: 5%;
   box-shadow: 2.5px 2.5px 7.5px 7.5px $menu-background-shadow;
+  margin-left: 32.5%;
+  margin-right: 32.5%;
+  margin-top: $percent-10;
   text-align: left;
 }
 
@@ -30,9 +31,9 @@ body {
 }
 
 .finish-area {
-  transition-duration: 1s;
-  transition-delay: 3.5s;
   opacity: 0;
+  transition-delay: 3.5s;
+  transition-duration: 1s;
 }
 
 .h1-question {
@@ -40,26 +41,24 @@ body {
 }
 
 .question {
-  padding-top: 40px;
-  padding-left: 15%;
-  text-align: left;
   color: $default-white;
+  padding-left: 15%;
+  padding-top: 40px;
+  text-align: left;
   width: auto;
-  //justify-content: left;
-  //display: flex;
 }
 
 .answer-sub-div {
-  background-color: #ffffff;
+  background-color: $default-white;
   border: $solid;
   border-color: $button-background;
   border-radius: $border-radius;
-  width: 100%;
-  text-align: $left;
-  padding-top: $button-padding;
-  padding-bottom: $button-padding;
   margin-bottom: 10px;
   margin-top: 10px;
+  padding-bottom: $button-padding;
+  padding-top: $button-padding;
+  text-align: $left;
+  width: 100%;
 
   &::target-text {
     padding-left: 5px;
@@ -67,20 +66,20 @@ body {
 
   &:hover {
     background-color: $button-background-hover;
-    transition-duration: 0.5s;
+    transition-duration: 1000ms;
   }
 
   &:not(:hover) {
-    transition-duration: 0.5s;
+    transition-duration: 1000ms;
   }
 }
 
 .answer-total {
-  width: 70%;
+  cursor: pointer;
   padding-left: 15%;
   padding-right: 15%;
   text-align: left;
-  cursor: pointer;
+  width: 70%;
 }
 
 .answer-4 {
@@ -88,34 +87,34 @@ body {
 }
 
 .button-next {
-  padding: $button-padding;
+  background-color: $button-background-next;
   border-color: $button-background;
   border-radius: $border-radius;
-  background-color: #52fff1;
+  color: $default-black;
   opacity: 0;
+  padding: $button-padding;
   transition-duration: 1s;
-  color: black;
 }
 
 .button-div-next {
-  width: 10%;
   padding-left: 85%;
   padding-right: 5%;
+  width: 10%;
 }
 
 .button-again {
-  padding: $button-padding;
-  margin-top: 3%;
+  background-color: $button-background-next;
   border-color: $button-background;
   border-radius: $border-radius;
-  background-color: #52fff1;
+  color: $default-black;
+  margin-top: 3%;
+  padding: $button-padding;
   transition-duration: 1s;
-  color: black;
 }
 
 .locked {
-  cursor: default;
   background-color: $default-white;
+  cursor: default;
 
   &.false {
     background-color: $false;
@@ -152,35 +151,35 @@ body {
 
 #head-section {
   display: $flex;
-  flex-wrap: nowrap;
   flex-direction: column;
+  flex-wrap: nowrap;
   height: auto;
 }
 
 #timer-div {
-  display: $flex;
-  left: 60%;
-  margin-left: 15%;
-  margin-right: 15%;
-  font-size: 25px;
-  width: auto;
-  max-width: 119px;
-  min-width: 100px;
-  height: auto;
   border: $solid;
   border-color: $button-background;
   border-radius: $border-radius;
+  display: $flex;
+  font-size: 25px;
+  height: auto;
+  left: 60%;
+  margin-left: 15%;
+  margin-right: 15%;
+  max-width: 119px;
+  min-width: 100px;
+  width: auto;
 }
 
 #timer-time-span {
-  position: relative;
   padding-left: 5%;
+  position: relative;
   text-align: $right;
 }
 
 #timer-text-span {
-  text-align: $left;
   padding-left: 7.5%;
+  text-align: $left;
 }
 
 .timer {
@@ -190,7 +189,7 @@ body {
 .end-div {
   background-color: $menu-background;
   color: $default-white;
-  text-align: $center;
   padding: 5%;
   padding-bottom: 3%;
+  text-align: $center;
 }

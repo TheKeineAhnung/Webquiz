@@ -1,4 +1,4 @@
-async function loadFile() {
+function loadFile() {
   $.ajax({
     url: "../data/question.json",
     dataType: "json",
@@ -9,7 +9,7 @@ async function loadFile() {
   });
 }
 
-async function next() {
+function next() {
   $.ajax({
     url: "../data/question.json",
     dataType: "json",
@@ -32,7 +32,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function displayQuestion(allData) {
+function displayQuestion(allData) {
   var questionArea = document.getElementById("question");
   var answerAreaOne = document.getElementsByClassName("answer-1-span")[0];
   var answerAreaTwo = document.getElementsByClassName("answer-2-span")[0];
@@ -89,9 +89,9 @@ async function displayQuestion(allData) {
           }
         },
       });
-      for (i of options) {
+      for (var i of options) {
         i.classList.add("locked");
-        for (i of buttonNext) {
+        for (var i of buttonNext) {
           $.ajax({
             url: "../data/question.json",
             dataType: "json",
@@ -126,7 +126,7 @@ async function displayQuestion(allData) {
 function answer(selectedAnswer) {
   sessionStorage.setItem("selectedAnswer", selectedAnswer);
   var options = document.getElementsByClassName("answer-sub-div");
-  for (i of options) {
+  for (var i of options) {
     i.classList.add("locked");
   }
 
@@ -150,7 +150,7 @@ function answer(selectedAnswer) {
           "correctAnswers",
           Number(sessionStorage.getItem("correctAnswers")) + 1
         );
-        for (i of buttonNext) {
+        for (var i of buttonNext) {
           if (r[Number(localStorage.getItem("round"))].id != r.length) {
             i.style.opacity = 1;
           } else {
@@ -177,7 +177,7 @@ function answer(selectedAnswer) {
         var getClassListTimer = document.getElementsByClassName("locked");
         for (var actualClass of getClassListTimer[0].classList) {
           if (actualClass == "locked") {
-            for (i of buttonNext) {
+            for (var i of buttonNext) {
               if (r[Number(localStorage.getItem("round"))].id != r.length) {
                 i.style.opacity = 1;
               } else {
@@ -189,7 +189,7 @@ function answer(selectedAnswer) {
           }
         }
       } else {
-        for (i of buttonNext) {
+        for (var i of buttonNext) {
           if (r[Number(localStorage.getItem("round"))].id != r.length) {
             i.style.opacity = 1;
           } else {
@@ -204,14 +204,14 @@ function answer(selectedAnswer) {
 
 function reset() {
   var options = document.getElementsByClassName("answer-sub-div");
-  for (i of options) {
+  for (var i of options) {
     i.classList.remove("locked");
     i.classList.remove("correct");
     i.classList.remove("false");
   }
   sessionStorage.setItem("actualRound", 0);
   var buttonNext = document.getElementsByClassName("button-next");
-  for (i of buttonNext) {
+  for (var i of buttonNext) {
     i.style.opacity = 0;
   }
 }

@@ -4,33 +4,33 @@
 $header-height: 6.5%;
 $menu-width: $percent-100;
 $start-button-radius: 5px;
+$no-background: #fff0;
 
 .menu-main-div {
-  left: $percent-0;
-  width: $menu-width;
-  position: $absolute;
-  height: $header-height;
-  border-color: #ffffff00;
   background-color: $menu-background;
+  border-color: $no-background;
+  border-radius: $div-border;
+  height: $header-height;
+  left: $percent-0;
   overflow: $hidden;
   position: $relative;
   text-align: $center;
-  border-radius: $div-border;
+  width: $menu-width;
 }
 
 .button.start {
-  margin: $pixel-5;
-  font-size: $button-font-size;
-  border-radius: $start-button-radius;
-  border: $none;
   background-color: $button-background;
+  border: $none;
+  border-radius: $start-button-radius;
+  font-size: $button-font-size;
+  margin: $pixel-5;
 
   &:hover {
     background-color: $button-background-hover;
-    transition-duration: 0.5s;
+    transition-duration: 1000ms;
   }
 
   &:not(:hover) {
-    transition-duration: 0.5s;
+    transition-duration: 1000ms;
   }
 }
