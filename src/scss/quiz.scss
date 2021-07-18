@@ -86,6 +86,10 @@ body {
   margin-bottom: 25px;
 }
 
+.button {
+  cursor: pointer;
+}
+
 .button-next {
   background-color: $button-background-next;
   border-color: $button-background;
