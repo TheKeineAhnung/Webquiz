@@ -1,7 +1,7 @@
 {
-  "name": "quiz",
+  "name": "webquiz",
   "version": "1.0.0",
-  "description": "A basic quiz",
+  "description": "A simple webquiz",
   "main": "index.js",
   "scripts": {
     "dev": "gulp dev",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheKeineAhnung/quiz.git"
+    "url": "git+https://github.com/TheKeineAhnung/webquiz.git"
   },
   "keywords": [],
   "author": "KeineAhnung",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TheKeineAhnung/quiz/issues"
+    "url": "https://github.com/TheKeineAhnung/webquiz/issues"
   },
-  "homepage": "https://github.com/TheKeineAhnung/quiz#readme",
+  "homepage": "https://github.com/TheKeineAhnung/webquiz#readme",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
