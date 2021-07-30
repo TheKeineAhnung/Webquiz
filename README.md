@@ -6,7 +6,8 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unpor
 ## How to use
 
 1. Download the repository.
-2. Take the src folder and copy it into your directory.
+2. Take the src folder and copy it into your directory. <br>
+Attention: You must compile the .scss files to .css files ([Tutorial](https://mishkaorakzai.medium.com/how-to-add-and-compile-scss-to-run-automatically-in-the-background-on-an-existing-node-js-project-f0172141ae47))
 
 ### Add questions
 
