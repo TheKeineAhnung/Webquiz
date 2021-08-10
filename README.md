@@ -6,8 +6,11 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unpor
 ## How to use
 
 1. Download the repository.
-2. Take the src folder and copy it into your directory. <br>
-Attention: You must compile the .scss files to .css files ([Tutorial](https://mishkaorakzai.medium.com/how-to-add-and-compile-scss-to-run-automatically-in-the-background-on-an-existing-node-js-project-f0172141ae47))
+2. Open the commandline.
+   - Navigate into the downloaded folder
+3. Type `npm install`
+4. Type `npm run build`
+5. Now you can copy the `dist` folder and use it as long it agrees with the [LICENSE.md](https://github.com/TheKeineAhnung/Webquiz/blob/main/LICENSE.md).
 
 ### Add questions
 
